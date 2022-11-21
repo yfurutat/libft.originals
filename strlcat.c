@@ -3,9 +3,12 @@
 //arg[2]!=NULL && arg[1]==NULL && arg[3]==0 
 //->return: strlen(arg2) & dst = (null)!!!
 
+#include <stdio.h>
+#include <string.h>
+
 int	main()
 {
-  char *dst1 = ft_calloc(100, sizeof(char));
+	char *dst1 = ft_calloc(100, sizeof(char));
 	char *dst2 = ft_calloc(100, sizeof(char));
 	printf("1. %zu %s\n", strlcat(dst1, "", 100), dst1);
 	printf("2. %zu %s\n", strlcat(dst1, "hello ", 100), dst1);
@@ -13,13 +16,13 @@ int	main()
 	printf("4. %zu %s\n", strlcat(dst1, "world", SIZE_MAX), dst1);//16 hello worldworld
 	printf("5. %zu %s\n", strlcat(dst1, "world", SIZE_MAX+1), dst1);//5 hello worldworld
 	printf("6. %zu %s\n", strlcat(dst1, "world", SIZE_MAX-1), dst1);//21 hello worldworldworld
-  free(dst1);
+	free(dst1);
 	free(dst2);
-  dst1 = NULL;
-  printf("   4. %lu %s\n", strlcat(dst1, NULL, 0), dst1);//segv
-	printf("   4. %lu %s\n", strlcat(dst1, NULL, 2), dst1);//segv
-	printf("   4. %lu %s\n", strlcat(dst1, NULL, 100000), dst1);//segv
-	printf("   5. %lu %s\n", strlcat(dst1, "", 2), dst1);//segv
+	dst1 = NULL;
+// 	printf("   4. %lu %s\n", strlcat(dst1, NULL, 0), dst1);//segv
+// 	printf("   4. %lu %s\n", strlcat(dst1, NULL, 2), dst1);//segv
+// 	printf("   4. %lu %s\n", strlcat(dst1, NULL, 100000), dst1);//segv
+// 	printf("   5. %lu %s\n", strlcat(dst1, "", 2), dst1);//segv
 	printf("   6. %lu %s\n", strlcat(dst1, "", 0), dst1);//0 (null)
 	printf("   7. %lu %s\n", strlcat(dst1, "is", 0), dst1);//2 (null)
 	dst1 = "";
@@ -32,5 +35,5 @@ int	main()
 	printf("   9. %lu %s\n", strlcat(dst1, "", 0), dst1);//0 hello world
 	printf("  10. %lu %s\n", strlcat(dst1, "abc", 0), dst1);//3 hello world
 	printf("  11. %lu %s\n", strlcat(dst1, "!!!hello world!!!", 0), dst1);//17 hello world
-  return (0);
+	return (0);
 }
